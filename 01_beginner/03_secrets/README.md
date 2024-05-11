@@ -15,13 +15,19 @@ type: Opaque
 stringData:
   usuario: admin
   senha: senha_super_secreta
-Use code with caution.
-Yaml
-Implante o Secret:
+...
+```
+
+**Implante o Secret**:
+
+```bash
 kubectl apply -f secrets.yaml
-Use code with caution.
-Bash
-Crie um Deployment que utilize o Secret:
+```
+
+**Crie um Deployment que utilize o Secret**:
+
+```yaml
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:

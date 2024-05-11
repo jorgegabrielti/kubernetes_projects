@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-com-secrets
+spec:
+  # ... (restante da configuração)
+      containers:
+      - name: meu-app
+        image: sua-imagem-docker
+        env:
+        - name: DB_USUARIO
+          valueFrom:
+            secretKeyRef:
+              name: meu-banco-dados-secrets
+              key: usuario
+        - name: DB_SENHA
+          valueFrom:
+            secretKeyRef:
+              name: meu-banco-dados-secrets
+              key: senha
+...
