@@ -10,7 +10,7 @@ Crie o arquivo **deployment.yaml**:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: meu-nginx
+  name: nginx
 spec:
   replicas: 1
   selector:
@@ -34,7 +34,7 @@ Crie o arquivo **service.yaml**:
 apiVersion: v1
 kind: Service
 metadata:
-  name: meu-nginx-service
+  name: nginx-service
 spec:
   selector:
     app: nginx
@@ -53,7 +53,7 @@ kubectl apply -f service.yaml
 ```
 
 ```bash
-kubectl get service meu-nginx-service
+kubectl get service nginx-service
 ```
 ### Anote o EXTERNAL-IP e acesse no navegador
 
