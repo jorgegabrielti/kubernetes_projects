@@ -61,7 +61,25 @@ kubectl apply -f deployment.yaml
 kubectl apply -f hpa.yaml
 ```
 
-Monitore:
+**Monitore**:
+
+Para monitorar o status dos pods, é necessário a instalação do Metrics-Server:
+
+```bash
+wget https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.5.0/components.yaml
+```
+Edite o arquivo baixo e adicione na parte de argumentos de containers, a linha abaixo:
+
+```yaml
+- --kubelet-insecure-tls
+```
+
+Aplique as mudanças:
+
+```bash
+kubectl apply -f components.yaml
+```
+
 ```bash
 kubectl get hpa stress-app-hpa
 kubectl top pods
