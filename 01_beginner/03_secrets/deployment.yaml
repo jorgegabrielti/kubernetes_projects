@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: webapp:latest
+        image: jorgegabriel/webapp
         ports:
         - containerPort: 5000
         envFrom:
