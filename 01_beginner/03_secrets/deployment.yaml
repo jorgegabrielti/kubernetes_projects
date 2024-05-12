@@ -1,22 +1,22 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-com-secrets
+  name: webapp-deployment
 spec:
-  # ... (restante da configuração)
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
       containers:
-      - name: meu-app
-        image: sua-imagem-docker
-        env:
-        - name: DB_USUARIO
-          valueFrom:
-            secretKeyRef:
-              name: meu-banco-dados-secrets
-              key: usuario
-        - name: DB_SENHA
-          valueFrom:
-            secretKeyRef:
-              name: meu-banco-dados-secrets
-              key: senha
-...
+      - name: webapp
+        image: webapp:latest
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - secretRef:
+            name: mysql-credentials
